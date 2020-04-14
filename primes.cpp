@@ -3,33 +3,31 @@
 #include <iostream>
 using namespace std;
 
-int checkNumber(int checkNum) {
-	vector<int> primes = {2, 3, 5};
-	for (int i=0; i<primes.size(); i++)
-		if (checkNum % primes[i] == 0) {
-			bool flag = false;
-			return flag;
-			break;
+vector<int> checkNumber(int checkNum, vector<int> primeList) {
+	bool prime=true;
+	for (int i=0; i<primeList.size(); i++){
+		if (checkNum % primeList[i] == 0){
+			prime = false;
 		}
-		return flag;	
-	if (flag != false)
-		primes.push_back(checkNum);
-		cout << primes.back() << " is prime" << endl;
-	
+	}
+	if (prime != false){
+		primeList.push_back(checkNum);
+		cout << primeList.back() << " is prime" << endl;
+	}
+	return primeList;
 }
 
 int main() {
-/*	vector<float> nums;
-	for (int i=1; i<11; i++)
-		nums.push_back(i);
-	cout << "The vec elems are: ";
-	for (int i=0; i < nums.size(); i++)
-		cout << nums[i] << " ";
-	cout << "\n";
-*/	
+	
+	cout << "1 is prime\n" << "2 is prime\n" << "3 is prime\n" << "5 is prime\n";
 	int z=6;
-	while (z < 20)
-		checkNumber(z);
+	vector<int> primeList = {2, 3, 5};
+	int b = primeList.size();
+
+	while (b < 50){
+		primeList = checkNumber(z, primeList);
 		z++;
+		b = primeList.size();
+	}
 	return 0;
 }
